@@ -4,7 +4,7 @@ df = pandas.read_csv("hotels.csv", dtype={"id": str})
 df_cards = pandas.read_csv("cards.csv", dtype="str").to_dict(orient="records")
 df_card_security = pandas.read_csv("card_security.csv", dtype="str")
 
-
+# Build a hotel class
 class Hotel:
     def __init__(self, hotel_id):
         self.hotel_id = hotel_id
@@ -25,11 +25,14 @@ class Hotel:
             return False
 
 
+# Build the class for spa option
+
 class SpaHotel(Hotel):
     def book_spa_package(self):
         pass
 
 
+# Class for the confirmation of reservation
 class ReservationTicket:
     def __init__(self, customer_name, hotel_object):
         self.customer_name = customer_name
@@ -45,6 +48,7 @@ class ReservationTicket:
         return content
 
 
+# Build the credit card class
 class CreditCard:
     def __init__(self, number):
         self.number = number
@@ -58,6 +62,8 @@ class CreditCard:
             return False
 
 
+# Class for the authentication of credit card
+
 class SecureCreditCard(CreditCard):
     def authenticate(self, given_password):
         password = df_card_security.loc[df_card_security["number"] == self.number, "password"].squeeze()
@@ -67,7 +73,8 @@ class SecureCreditCard(CreditCard):
             return False
 
 
-class SpaTicket():
+# Class for the spa confirmation
+class SpaTicket:
     def __init__(self, customer_name, hotel_object):
         self.customer_name = customer_name
         self.hotel = hotel_object
