@@ -112,7 +112,3 @@ if hotel.available():
         print("There is a problem with your credit card")
 else:
     print("Hotel is not available.")
-
-
-
-
